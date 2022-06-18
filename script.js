@@ -1,7 +1,12 @@
-import { readdir } from "fs";
+const express = require("express");
+const app = express();
 
-readdir("midi", (err, files) => {
-  files.forEach(file => {
-    console.log(file);
+app.get("/", (req, res) => {
+  res.status(200).json({
+    result: "200"
   });
-}); 
+});
+
+app.listen(5000, () => {
+  console.log("Server is up and on port 5000");
+});
