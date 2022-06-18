@@ -1,8 +1,8 @@
 const express = require("express");
-const favicon = require("serve-favicon");
-const bodyParser = require('body-parser');
 const path = require("path");
+const fs = require("fs");
 
+const files = fs.readdirSync("midi");
 const app = express();
 
 app.get("/", (req, res) => {
@@ -11,6 +11,4 @@ app.get("/", (req, res) => {
 
 app.use(express.static("public"));
 
-app.listen(5000, () => {
-  console.log("Server is up and on port 5000");
-});
+app.listen(5000);
