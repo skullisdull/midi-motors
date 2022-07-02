@@ -1,14 +1,21 @@
 const express = require("express");
+const app = express();
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
+const Gpio = require("onoff").Gpio;
 const path = require("path");
 const fs = require("fs");
+const favicon = require("serve-favicon");
 
-const files = fs.readdirSync("midi");
-const app = express();
+app.use(express.static("public"));
+app.use(favicon(path.join(__dirname, "public/favicon.ico")));
 
 app.get("/", (req, res) => {
   res.status(200).sendFile(path.join(__dirname, "public/index.html"));
 });
 
-app.use(express.static("public"));
+io.on("connection", (socket) => {
+  console.log("connected");
+});
 
-app.listen(5000);
+server.listen(5000);
