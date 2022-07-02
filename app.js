@@ -15,7 +15,12 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log("connected");
+  console.log(`${socket.id} connected`);
+  socket.on("disconnect", (reason) => {
+    console.log(`${socket.id} disconnected. Reason: ${reason}`);
+  });
+
+  socket.emit("midi files", fs.readdirSync("public/midi"));
 });
 
 server.listen(5000);

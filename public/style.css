@@ -78,3 +78,19 @@ a {
 .material-icons-outlined {
 	vertical-align: -25%;
 }
+
+.songs-container {
+	margin: 20px;
+	display: inline-flex;
+	flex-direction: column;
+	background-color: var(--bg-low);
+	padding: 5px;
+}
+.song {
+	margin: 5px;
+	background-color: var(--bg-high);
+	border-color: var(--bg-high);
+	padding: 5px;
+	color: whitesmoke;
+	width: calc(100% - 10px);
+}
