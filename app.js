@@ -21,6 +21,11 @@ io.on("connection", (socket) => {
   });
 
   socket.emit("midi files", fs.readdirSync("public/midi"));
+
+  socket.on("song chosen", (song) => {
+    console.log(song);
+    
+  });
 });
 
 server.listen(5000);
